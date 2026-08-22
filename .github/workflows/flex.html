@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+  <title> Rachna art & flex Gallery |</title>
+  <meta
+    name="description"
+    content="Professional flex printing, banners, business cards, stickers, signboards, and custom printing services."
+  />
+ 
+  <style>
+    :root {
+      --primary: #e63946;
+      --secondary: #111827;
+      --accent: #fbbf24;
+      --light: #f8fafc;
+      --dark: #1f2937;
+      --muted: #64748b;
+      --white: #ffffff;
+      --border: #e5e7eb;
+    }
+ 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+ 
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+    }
+ 
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+ 
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+ 
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+ 
+    .btn {
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      padding: 13px 22px;
+      border-radius: 7px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+ 
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+ 
+    .btn-primary:hover {
+      background: #c92836;
+      transform: translateY(-2px);
+    }
+ 
+    .btn-dark {
+      background: var(--secondary);
+      color: var(--white);
+    }
+ 
+    .btn-dark:hover {
+      background: #374151;
+    }
+ 
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+ 
+    .section-title h2 {
+      font-size: 34px;
+      color: var(--secondary);
+      margin-bottom: 8px;
+    }
+ 
+    .section-title p {
+      color: var(--muted);
+    }
+ 
+    /* Header */
+    header {
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+ 
+    .navbar {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+ 
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+ 
+    .logo span {
+      color: var(--secondary);
+    }
+ 
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      align-items: center;
+    }
+ 
+    .nav-links a {
+      font-weight: 600;
+      color: var(--dark);
+    }
+ 
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+ 
+    .menu-btn {
+      display: none;
+      border: none;
+      background: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+ 
+    /* Hero */
+    .hero {
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      background:
+        linear-gradient(rgba(17, 24, 39, 0.76), rgba(17, 24, 39, 0.76)),
+        url("https://images.unsplash.com/photo-1601762603339-fd61e28b698a?auto=format&fit=crop&w=1800&q=80")
+        center/cover;
+    }
+ 
+    .hero-content {
+      max-width: 680px;
+    }
+ 
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+ 
+    .hero h1 span {
+      color: var(--accent);
+    }
+ 
+    .hero p {
+      font-size: 19px;
+      margin-bottom: 30px;
+      color: #e5e7eb;
+    }
+ 
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+ 
+    /* Services */
+    section {
+      padding: 80px 0;
+    }
+ 
+    .services {
+      background: var(--light);
+    }
+ 
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+ 
+    .service-card {
+      background: var(--white);
+      padding: 28px 20px;
+      text-align: center;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      transition: 0.3s;
+    }
+ 
+    .service-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+ 
+    .service-icon {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 18px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #fee2e2;
+      color: var(--primary);
+      font-size: 28px;
+    }
+ 
+    .service-card h3 {
+      margin-bottom: 8px;
+      color: var(--secondary);
+    }
+ 
+    .service-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+ 
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+ 
+    .about-image {
+      border-radius: 12px;
+      height: 390px;
+      object-fit: cover;
+    }
+ 
+    .about-content h2 {
+      color: var(--secondary);
+      font-size: 36px;
+      margin-bottom: 18px;
+    }
+ 
+    .about-content p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+ 
+    .check-list {
+      list-style: none;
+      margin: 22px 0;
+    }
+ 
+    .check-list li {
+      margin: 11px 0;
+      font-weight: 600;
+    }
+ 
+    .check-list li::before {
+      content: "✓";
+      color: var(--primary);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+ 
+    /* Gallery */
+    .gallery {
+      background: var(--light);
+    }
+ 
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+ 
+    .gallery-grid img {
+      height: 230px;
+      border-radius: 9px;
+      transition: 0.3s;
+    }
+ 
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+    }
+ 
+    /* Quote */
+    .quote-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 45px;
+      align-items: start;
+    }
+ 
+    .quote-info {
+      background: var(--secondary);
+      color: var(--white);
+      padding: 32px;
+      border-radius: 10px;
+    }
+ 
+    .quote-info h2 {
+      margin-bottom: 15px;
+      font-size: 32px;
+    }
+ 
+    .quote-info p {
+      color: #d1d5db;
+      margin-bottom: 20px;
+    }
+ 
+    .contact-item {
+      margin: 18px 0;
+    }
+ 
+    .contact-item strong {
+      display: block;
+      color: var(--accent);
+    }
+ 
+    form {
+      display: grid;
+      gap: 16px;
+    }
+ 
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+ 
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font: inherit;
+      outline: none;
+    }
+ 
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--primary);
+    }
+ 
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+ 
+    /* Reviews */
+    .reviews {
+      background: var(--light);
+    }
+ 
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+ 
+    .review-card {
+      background: var(--white);
+      padding: 25px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+ 
+    .stars {
+      color: var(--accent);
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+ 
+    .review-card p {
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+ 
+    .review-card strong {
+      color: var(--secondary);
+    }
+ 
+    /* Footer */
+    footer {
+      background: var(--secondary);
+      color: var(--white);
+      padding: 30px 0;
+      text-align: center;
+    }
+ 
+    footer p {
+      color: #cbd5e1;
+      margin: 6px 0;
+    }
+ 
+    .social-links {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+    }
+ 
+    .social-links a {
+      color: var(--accent);
+      font-weight: bold;
+    }
+ 
+    /* WhatsApp */
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      background: #25d366;
+      color: white;
+      border-radius: 50%;
+      font-size: 29px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      z-index: 999;
+    }
+ 
+    /* Responsive */
+    @media (max-width: 900px) {
+      .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+ 
+      .about-grid,
+      .quote-grid {
+        grid-template-columns: 1fr;
+      }
+ 
+      .review-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+ 
+    @media (max-width: 650px) {
+      .menu-btn {
+        display: block;
+      }
+ 
+      .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        background: var(--white);
+        border-top: 1px solid var(--border);
+      }
+ 
+      .nav-links.active {
+        display: flex;
+      }
+ 
+      .nav-links li {
+        width: 100%;
+      }
+ 
+      .nav-links a {
+        display: block;
+        padding: 14px 4%;
+        border-bottom: 1px solid var(--border);
+      }
+ 
+      .hero {
+        min-height: 570px;
+      }
+ 
+      .hero p {
+        font-size: 16px;
+      }
+ 
+      .service-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+ 
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+ 
+      .section-title h2,
+      .about-content h2 {
+        font-size: 29px;
+      }
+    }
+  </style>
+</head>
+ 
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container navbar">
+      <a href="#home" class="logo">Color<span>Press</span></a>
+ 
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        ☰
+      </button>
+ 
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#quote">Get a Quote</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+ 
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Quality Printing for <span>Every Business</span></h1>
+        <p>
+          Professional flex printing, banners, business cards, stickers,
+          signboards, and custom printing services at affordable prices.
+        </p>
+ 
+        <div class="hero-buttons">
+          <a href="#quote" class="btn btn-primary">Request a Quote</a>
+          <a href="tel:+911234567890" class="btn btn-dark">Call Us Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Printing Services</h2>
+        <p>Professional printing solutions for individuals, shops, events, and businesses.</p>
+      </div>
+ 
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-icon">🖨️</div>
+          <h3>Flex Printing</h3>
+          <p>High-quality flex banners for shops, promotions, and events.</p>
+        </div>
+ 
+        <div class="service-card">
+          <div class="service-icon">🎨</div>
+          <h3>Vinyl Printing</h3>
+          <p>Durable vinyl prints for walls, windows, vehicles, and branding.</p>
+        </div>
+ 
+        <div class="service-card">
+          <div class="service-icon">💳</div>
+          <h3>Business Cards</h3>
+          <p>Professional visiting cards to promote your business.</p>
+        </div>
+ 
+        <div class="service-card">
+          <div class="service-icon">📢</div>
+          <h3>Signboards</h3>
+          <p>Custom shop boards, display boards, and promotional signage.</p>
+        </div>
+ 
+        <div class="service-card">
+          <div class="service-icon">📰</div>
+          <h3>Flyers & Posters</h3>
+          <p>Eye-catching flyers, posters, brochures, and leaflets.</p>
+        </div>
+ 
+        <div class="service-card">
+          <div class="service-icon">🏷️</div>
+          <h3>Stickers & Labels</h3>
+          <p>Custom product labels, logo stickers, and packaging stickers.</p>
+        </div>
+ 
+        <div class="service-card">
+          <div class="service-icon">🚗</div>
+          <h3>Vehicle Branding</h3>
+          <p>Make your vehicle a mobile advertisement for your business.</p>
+        </div>
+ 
+        <div class="service-card">
+          <div class="service-icon">👕</div>
+          <h3>T-Shirt Printing</h3>
+          <p>Custom printed T-shirts for teams, events, and businesses.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- About Section -->
+  <section id="about">
+    <div class="container about-grid">
+      <img
+        class="about-image"
+        src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1000&q=80"
+        alt="Printing design workspace"
+      />
+ 
+      <div class="about-content">
+        <h2>Your Trusted Local Printing Partner</h2>
+        <p>
+          ColorPress Printing provides reliable and affordable printing
+          services for businesses, events, schools, shops, and individuals.
+        </p>
+ 
+        <p>
+          From large flex banners to professional business cards, our team
+          delivers excellent quality and fast service.
+        </p>
+ 
+        <ul class="check-list">
+          <li>High-quality printing</li>
+          <li>Affordable prices</li>
+          <li>Fast turnaround time</li>
+          <li>Custom design support</li>
+          <li>Small and bulk orders accepted</li>
+        </ul>
+ 
+        <a href="#quote" class="btn btn-primary">Start Your Order</a>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- Gallery Section -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Recent Work</h2>
+        <p>Some examples of our printing and branding projects.</p>
+      </div>
+ 
+      <div class="gallery-grid">
+        <img
+          src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=800&q=80"
+          alt="Printed materials"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80"
+          alt="Graphic design work"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?auto=format&fit=crop&w=800&q=80"
+          alt="Business branding"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=800&q=80"
+          alt="Brand design"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&fit=crop&w=800&q=80"
+          alt="Printed banner"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80"
+          alt="Colorful printing"
+        />
+      </div>
+    </div>
+  </section>
+ 
+  <!-- Quote Section -->
+  <section id="quote">
+    <div class="container quote-grid">
+      <div class="quote-info">
+        <h2>Get a Free Quote</h2>
+        <p>
+          Tell us what you need. We will contact you with the price and
+          delivery details.
+        </p>
+ 
+        <div class="contact-item">
+          <strong>Phone</strong>
+          +91 12345 67890
+        </div>
+ 
+        <div class="contact-item">
+          <strong>WhatsApp</strong>
+          +91 12345 67890
+        </div>
+ 
+        <div class="contact-item">
+          <strong>Address</strong>
+          Main Market, Your City, India
+        </div>
+ 
+        <div class="contact-item">
+          <strong>Opening Hours</strong>
+          Monday - Saturday: 9:00 AM - 8:00 PM
+        </div>
+      </div>
+ 
+      <form id="quoteForm">
+        <div class="form-row">
+          <input type="text" id="name" placeholder="Your Name" required />
+          <input type="tel" id="phone" placeholder="Phone Number" required />
+        </div>
+ 
+        <div class="form-row">
+          <input type="email" id="email" placeholder="Email Address" />
+          <select id="service" required>
+            <option value="">Select a Service</option>
+            <option>Flex Printing</option>
+            <option>Vinyl Printing</option>
+            <option>Business Cards</option>
+            <option>Signboards</option>
+            <option>Flyers and Posters</option>
+            <option>Stickers and Labels</option>
+            <option>Vehicle Branding</option>
+            <option>T-Shirt Printing</option>
+          </select>
+        </div>
+ 
+        <textarea
+          id="message"
+          placeholder="Tell us about size, quantity, design, and delivery date"
+          required
+        ></textarea>
+ 
+        <button type="submit" class="btn btn-primary">
+          Send Quote Request
+        </button>
+      </form>
+    </div>
+  </section>
+ 
+  <!-- Reviews Section -->
+  <section class="reviews">
+    <div class="container">
+      <div class="section-title">
+        <h2>What Our Customers Say</h2>
+        <p>Reliable service and quality printing for every order.</p>
+      </div>
+ 
+      <div class="review-grid">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            Excellent flex printing quality and very quick delivery. Highly
+            recommended.
+          </p>
+          <strong>— Rahul Sharma</strong>
+        </div>
+ 
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            They designed and printed our shop board perfectly. Great pricing
+            and professional service.
+          </p>
+          <strong>— Priya Enterprises</strong>
+        </div>
+ 
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            Good quality business cards and stickers. The staff was helpful and
+            friendly.
+          </p>
+          <strong>— Dinesh Agarwal</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>Visit our shop or contact us for your next printing project.</p>
+      </div>
+ 
+      <div style="text-align: center;">
+        <p><strong>ColorPress Printing</strong></p>
+        <p>Main Market, Your City, India</p>
+        <p>Phone: <a href="tel:+911234567890">+91 12345 67890</a></p>
+        <p>Email: <a href="mailto:info@colorpress.com">info@colorpress.com</a></p>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Rachna art & flex Gallery </article>. All rights reserved.</p>
+      <p>Flex Printing | Banners | Business Cards | Signboards</p>
+ 
+      <div class="social-links">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+ 
+  <!-- WhatsApp Button -->
+  <a
+    class="whatsapp"
+    href="https://wa.me/911234567890?text=Hello%20I%20need%20a%20printing%20quote."
+    target="_blank"
+    aria-label="Contact us on WhatsApp"
+  >
+    ☎ 9859359625
+  </a>
+ 
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+ 
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+ 
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+ 
+    document.getElementById("quoteForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+ 
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const service = document.getElementById("service").value;
+      const message = document.getElementById("message").value;
+ 
+      const whatsappNumber = "911234567890";
+ 
+      const text =
+        `Hello Rachna art &flex Gallery,%0A%0A` +
+        `Name: ${encodeURIComponent(name)}%0A` +
+        `Phone: ${encodeURIComponent(phone)}%0A` +
+        `Service: ${encodeURIComponent(service)}%0A` +
+        `Details: ${encodeURIComponent(message)}`;
+ 
+      window.open(`https://wa.me/${whatsappNumber}?text=${text}`, "_blank");
+    });
+  </script>
+</body>
+</html>
